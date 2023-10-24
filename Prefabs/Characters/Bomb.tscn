@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7plgon6q5oba"]
+
+[ext_resource type="Script" path="res://Scripts/Bomb.gd" id="1_o15ob"]
+[ext_resource type="Texture2D" uid="uid://c0oi870auwky7" path="res://Art/Characters/Enemies/Bomb.png" id="2_tinqm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iy30d"]
+radius = 33.0151
+
+[sub_resource type="Animation" id="Animation_3cj5i"]
+resource_name = "Explode"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dpevy"]
+_data = {
+"Explode": SubResource("Animation_3cj5i")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dxhn8"]
+radius = 19.0
+
+[node name="Bomb" type="CharacterBody2D"]
+script = ExtResource("1_o15ob")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tinqm")
+
+[node name="Explode" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explode"]
+shape = SubResource("CircleShape2D_iy30d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dpevy")
+}
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dxhn8")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

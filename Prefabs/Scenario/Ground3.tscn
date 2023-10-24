@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://df1d5fadsl4vn"]
+
+[ext_resource type="Texture2D" uid="uid://cdac8g088a21f" path="res://Art/Demo/City/Ground3.png" id="1_52ghi"]
+
+[node name="Ground3" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_52ghi")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(1424, -1104)
+polygon = PackedVector2Array(0, 1136, 1192, 1136, 1192, 1360, 2008, 1768, 2008, 2160, 0, 2160)

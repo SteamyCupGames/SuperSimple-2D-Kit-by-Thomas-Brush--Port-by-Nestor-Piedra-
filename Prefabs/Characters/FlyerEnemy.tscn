@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://bw4tldcd0348c"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/FlyerEnemy.gd" id="1_vyfci"]
+[ext_resource type="Texture2D" uid="uid://diln41vlyj72i" path="res://Art/Characters/Enemies/Flyer.png" id="2_rxvoc"]
+[ext_resource type="AudioStream" uid="uid://b7xycy41c635u" path="res://Sounds/FX/enemy_explode.wav" id="4_qh6nj"]
+[ext_resource type="PackedScene" uid="uid://borj2soptb65r" path="res://Scenes/UI/Trail.tscn" id="4_qh8w4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8f0i7"]
+radius = 72.0069
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0h3my"]
+radius = 588.008
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wch1t"]
+radius = 60.1332
+
+[sub_resource type="Curve" id="Curve_8fo8n"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_qc1jw"]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j6n52"]
+_data = {
+"Hit": SubResource("Animation_qc1jw")
+}
+
+[node name="FlyerEnemy" type="CharacterBody2D" groups=["Hit"]]
+script = ExtResource("1_vyfci")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rxvoc")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_8f0i7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="VisionRange" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0h3my")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wch1t")
+
+[node name="EnemyExplode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qh6nj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Line2D" parent="." instance=ExtResource("4_qh8w4")]
+width = 25.0
+width_curve = SubResource("Curve_8fo8n")
+MAX_LENGTH = 100
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j6n52")
+}
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://dph3ei5lhu3s6"]
+
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu.gd" id="1_gjcgj"]
+[ext_resource type="Texture2D" uid="uid://cc6okaa7x0op3" path="res://Art/Menu/Background.png" id="2_jam64"]
+[ext_resource type="Texture2D" uid="uid://ccl71dpiiuqxd" path="res://Art/Menu/Logo.png" id="3_t1sc8"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_gjcgj")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(1927, 1075.5)
+scale = Vector2(2.00208, 2.01574)
+texture = ExtResource("2_jam64")
+
+[node name="BG2" type="Sprite2D" parent="."]
+position = Vector2(1633, 867.5)
+scale = Vector2(2.00208, 2.01574)
+texture = ExtResource("3_t1sc8")
+
+[node name="StartGame" type="Button" parent="."]
+custom_minimum_size = Vector2(400, 200)
+offset_left = 887.0
+offset_top = 1149.5
+offset_right = 1413.0
+offset_bottom = 1349.5
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 80
+action_mode = 0
+text = "START GAME
+"
+
+[node name="Quit" type="Button" parent="."]
+custom_minimum_size = Vector2(400, 200)
+offset_left = 888.0
+offset_top = 1367.5
+offset_right = 1414.0
+offset_bottom = 1567.5
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 80
+action_mode = 0
+text = "QUIT "
+
+[connection signal="pressed" from="StartGame" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

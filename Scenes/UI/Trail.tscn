@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://borj2soptb65r"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/Trail.gd" id="1_svscb"]
+[ext_resource type="Texture2D" uid="uid://b603iu7f8qvbc" path="res://Art/Global/Trail.png" id="1_uqvjj"]
+
+[sub_resource type="Curve" id="Curve_8k1ce"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Line2D" type="Line2D"]
+show_behind_parent = true
+width_curve = SubResource("Curve_8k1ce")
+texture = ExtResource("1_uqvjj")
+script = ExtResource("1_svscb")
+MAX_LENGTH = 50

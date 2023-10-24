@@ -1,0 +1,28 @@
+~ npcA
+set GameManager.is_hud_available = false
+
+if GameManager.coins < 1:
+	NPC: Hi there!
+	NPC: I'm an NPC! This conversation is called 'npcA'
+	NPC: If you go and find me 80 coins, my dialogue will move on to 'npcB'
+	- Let me go find some coins!
+		=> END
+	- What else can you do?
+		NPC: Feel free to edit my dialogue in the 'NPC.dialogue' file!
+		NPC: To keep it simple, you can also ask me one, and only one, question...
+		NPC: Like you just did! And I'll just move on to the next sentence.
+		NPC: I'll answer that question, but it won't change much about the game!
+		NPC: You can always tweak the 'NPC.dialogue' and check the link provided in 'Actionable.tscn' to add more functionality!
+	set GameManager.is_hud_available = true
+	
+else:
+	NPC: Hey! You found 80 coins! That means 'else' statement is now being used inside 'NPC.dialogue'!
+	NPC: After my dialogue completes, I'll take 80 coins, or however many you specify in the dialogue...
+	NPC: And I'll also give you a new ability!
+	NPC: In this case, how about a generic  DOWNWARD SMASH? Simply attack while pressing down in mid-air!
+	set GameManager.coins = GameManager.coins - 5
+	set GameManager.down_attack_unlocked = true
+	
+set GameManager.is_hud_available = true
+
+=> END

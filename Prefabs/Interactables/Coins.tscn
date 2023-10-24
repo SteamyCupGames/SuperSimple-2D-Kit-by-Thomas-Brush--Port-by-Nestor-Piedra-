@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=3 uid="uid://h62fs37eb6ea"]
+
+[ext_resource type="Script" path="res://Scripts/Coins.gd" id="1_83j83"]
+[ext_resource type="Texture2D" uid="uid://8krqrxs23u46" path="res://Art/Global/Coin.png" id="1_fnwdo"]
+[ext_resource type="Texture2D" uid="uid://q4f3i8g4wavu" path="res://Art/Global/ExplosionStar.png" id="2_kv7v8"]
+[ext_resource type="AudioStream" uid="uid://bjl1ejdryfck" path="res://Sounds/FX/health.wav" id="4_cqsk2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n32la"]
+radius = 39.0
+
+[sub_resource type="Animation" id="Animation_uv5ky"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UIElements/Light1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UIElements/Light1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UIElements/Light2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UIElements/Light2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -3.14159, -6.28319]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UIElements/Sprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0emas"]
+resource_name = "Spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, -50), Vector2(20, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2pqu"]
+_data = {
+"Idle": SubResource("Animation_uv5ky"),
+"Spawn": SubResource("Animation_0emas")
+}
+
+[node name="Coins" type="Area2D"]
+script = ExtResource("1_83j83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n32la")
+
+[node name="CollectedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cqsk2")
+volume_db = -3.0
+
+[node name="UIElements" type="Node2D" parent="."]
+
+[node name="Light1" type="Sprite2D" parent="UIElements"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_kv7v8")
+
+[node name="Light2" type="Sprite2D" parent="UIElements"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_kv7v8")
+
+[node name="Sprite2D" type="Sprite2D" parent="UIElements"]
+texture = ExtResource("1_fnwdo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UIElements"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_j2pqu")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

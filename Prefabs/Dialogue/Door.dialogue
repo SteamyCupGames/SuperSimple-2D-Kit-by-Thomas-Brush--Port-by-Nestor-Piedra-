@@ -1,0 +1,11 @@
+~ start
+set GameManager.is_hud_available = false
+
+if GameManager.has_key == true:
+	Locked Door: Key used!
+else:
+	Locked Door: A large door ...
+	Locked Door: Looks like it has a key hole!
+
+set GameManager.is_hud_available = true
+=> END

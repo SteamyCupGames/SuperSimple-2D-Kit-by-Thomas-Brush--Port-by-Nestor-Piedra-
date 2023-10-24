@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://nqk1yb47btdk"]
+
+[ext_resource type="Texture2D" uid="uid://drrv7peyy53" path="res://Art/Demo/City/Platform.png" id="1_gmqni"]
+
+[node name="Platform" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gmqni")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-1488, -816, -1488, -744, -856, -744, -856, -816)

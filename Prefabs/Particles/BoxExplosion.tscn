@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1vtbxcnxgpxf"]
+
+[ext_resource type="Texture2D" uid="uid://dlyct07uei2li" path="res://Art/Global/BotPiece.png" id="1_lcgrg"]
+[ext_resource type="Script" path="res://Scripts/Effects/BoxExplosion.gd" id="2_kah4e"]
+
+[sub_resource type="Curve" id="Curve_3k35n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Explosion" type="CPUParticles2D"]
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+texture = ExtResource("1_lcgrg")
+emission_shape = 1
+emission_sphere_radius = 100.0
+spread = 180.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+scale_amount_curve = SubResource("Curve_3k35n")
+color = Color(0.996094, 0, 0.328125, 1)
+script = ExtResource("2_kah4e")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

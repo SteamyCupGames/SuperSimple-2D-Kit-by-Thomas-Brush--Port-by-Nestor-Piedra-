@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://gdcspeuxvibu"]
+
+[ext_resource type="Texture2D" uid="uid://732x3cjbp77q" path="res://Art/Characters/Enemies/Walker.png" id="1_hmxp0"]
+[ext_resource type="Script" path="res://Scripts/Enemies/WalkerEnemy.gd" id="1_vca2g"]
+[ext_resource type="AudioStream" uid="uid://b7xycy41c635u" path="res://Sounds/FX/enemy_explode.wav" id="3_ki35f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omoqn"]
+size = Vector2(120, 121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5uph"]
+size = Vector2(145, 126)
+
+[sub_resource type="Animation" id="Animation_re4cv"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 0.95), Vector2(1, 1), Vector2(0.95, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kuvuv"]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oaaak"]
+_data = {
+"Hit": SubResource("Animation_kuvuv"),
+"Walk": SubResource("Animation_re4cv")
+}
+
+[node name="WalkerEnemy" type="CharacterBody2D" groups=["Hit"]]
+script = ExtResource("1_vca2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hmxp0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_omoqn")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_g5uph")
+
+[node name="RayCast2DDown" type="RayCast2D" parent="."]
+position = Vector2(-62, 56)
+target_position = Vector2(0, 15)
+
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
+position = Vector2(58, 0)
+rotation = -1.5708
+target_position = Vector2(0, 15)
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+position = Vector2(-57, 0)
+rotation = 1.5708
+target_position = Vector2(0, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oaaak")
+}
+
+[node name="EnemyExplode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ki35f")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

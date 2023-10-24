@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://eqkvmg0h0dr5"]
+
+[ext_resource type="Script" path="res://Scripts/UI/HUD.gd" id="1_kvylx"]
+[ext_resource type="Texture2D" uid="uid://vbk1cuxmblel" path="res://Art/UI/IconCoin.png" id="1_oq1ki"]
+[ext_resource type="Texture2D" uid="uid://c82ajgvvonsvx" path="res://Art/UI/IconKey.png" id="4_hvony"]
+[ext_resource type="Texture2D" uid="uid://b47k8l5qcjwvj" path="res://Art/UI/IconBlank.png" id="4_hvsu4"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_kvylx")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+self_modulate = Color(0.996094, 0, 0.328125, 1)
+offset_left = 228.0
+offset_top = 198.0
+offset_right = 932.0
+offset_bottom = 225.0
+step = 5.0
+show_percentage = false
+
+[node name="CoinIcon" type="TextureRect" parent="."]
+offset_right = 3840.0
+offset_bottom = 2160.0
+texture = ExtResource("1_oq1ki")
+
+[node name="CoinText" type="Label" parent="."]
+offset_left = 304.0
+offset_top = 290.0
+offset_right = 347.0
+offset_bottom = 396.0
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="InventoryBlank" type="Sprite2D" parent="."]
+position = Vector2(2536, 811)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_hvsu4")
+
+[node name="InventoryKey" type="Sprite2D" parent="."]
+position = Vector2(2407, 811)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_hvony")

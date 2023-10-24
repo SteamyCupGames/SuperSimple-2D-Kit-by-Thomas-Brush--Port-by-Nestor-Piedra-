@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_10"
+type="Resource"
+uid="uid://csi6crdaegt1s"
+path="res://.godot/imported/Door.dialogue-20153fd14a43b34a517d7995f3eb551a.tres"
+
+[deps]
+
+source_file="res://Prefabs/Dialogue/Door.dialogue"
+dest_files=["res://.godot/imported/Door.dialogue-20153fd14a43b34a517d7995f3eb551a.tres"]
+
+[params]
+
+defaults=true

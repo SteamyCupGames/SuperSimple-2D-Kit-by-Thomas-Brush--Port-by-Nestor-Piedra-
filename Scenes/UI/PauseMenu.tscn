@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://b08h4wkxvgsyk"]
+
+[ext_resource type="Script" path="res://Scripts/UI/PauseMenu.gd" id="1_nrasf"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_nrasf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 3840.0
+offset_bottom = 2708.0
+scale = Vector2(1, 0.24)
+color = Color(0, 0, 0, 0.411765)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_top = 1600.0
+offset_right = 3840.0
+offset_bottom = 4308.0
+scale = Vector2(1, 0.24)
+color = Color(0, 0, 0, 0.411765)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_top = 1050.0
+offset_right = 3840.0
+offset_bottom = 3967.0
+scale = Vector2(1, 0.12)
+color = Color(0, 0, 0, 0.411765)
+
+[node name="Resume" type="Button" parent="."]
+custom_minimum_size = Vector2(400, 200)
+offset_top = 650.0
+offset_right = 3840.0
+offset_bottom = 850.0
+theme_override_font_sizes/font_size = 80
+action_mode = 0
+text = "CONTINUE"
+
+[node name="Restart" type="Button" parent="."]
+custom_minimum_size = Vector2(400, 200)
+offset_top = 850.0
+offset_right = 3840.0
+offset_bottom = 1050.0
+theme_override_font_sizes/font_size = 80
+action_mode = 0
+text = "RESTART LEVEL"
+
+[node name="Quit" type="Button" parent="."]
+custom_minimum_size = Vector2(400, 200)
+offset_top = 1400.0
+offset_right = 3840.0
+offset_bottom = 1600.0
+theme_override_colors/font_color = Color(1, 0, 0.329412, 1)
+theme_override_font_sizes/font_size = 60
+action_mode = 0
+text = "QUIT & LOSE PROGRESS"
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

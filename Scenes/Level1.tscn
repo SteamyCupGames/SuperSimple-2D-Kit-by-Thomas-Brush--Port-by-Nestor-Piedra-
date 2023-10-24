@@ -1,0 +1,1270 @@
+[gd_scene load_steps=65 format=3 uid="uid://dkq4s3isbem2d"]
+
+[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_7bisl"]
+[ext_resource type="PackedScene" uid="uid://cvbhfay5idocw" path="res://Prefabs/Characters/Player.tscn" id="1_dwvba"]
+[ext_resource type="Texture2D" uid="uid://4f70fsxxugfn" path="res://Art/Demo/City/Sky.png" id="1_md51d"]
+[ext_resource type="Texture2D" uid="uid://c6p5tj8qs13n6" path="res://Art/Demo/City/BuildingsBG.png" id="2_u60nr"]
+[ext_resource type="Script" path="res://Scripts/Effects/CameraShake.gd" id="3_cnqjj"]
+[ext_resource type="Texture2D" uid="uid://20rcw4t370gd" path="res://Art/Demo/City/BuildingsMid.png" id="3_wuy86"]
+[ext_resource type="PackedScene" uid="uid://dqrv05jrqm70q" path="res://Prefabs/Scenario/Ground1.tscn" id="4_1u1w3"]
+[ext_resource type="Script" path="res://Scripts/UI/PauseMenu.gd" id="4_lg3nu"]
+[ext_resource type="PackedScene" uid="uid://di0dnx5n7se7m" path="res://Prefabs/Scenario/Ground2.tscn" id="5_77dku"]
+[ext_resource type="PackedScene" uid="uid://nqk1yb47btdk" path="res://Prefabs/Scenario/Platform.tscn" id="5_lm7hn"]
+[ext_resource type="PackedScene" uid="uid://df1d5fadsl4vn" path="res://Prefabs/Scenario/Ground3.tscn" id="6_kwbpb"]
+[ext_resource type="Texture2D" uid="uid://csksw3a0kx3c6" path="res://Art/Demo/City/Foreground1.png" id="7_veoyq"]
+[ext_resource type="PackedScene" uid="uid://ddx1qipg48aj0" path="res://Prefabs/Scenario/Bridge.tscn" id="8_8b26j"]
+[ext_resource type="PackedScene" uid="uid://kbkuv3chd776" path="res://Prefabs/Interactables/Key.tscn" id="10_nxmdr"]
+[ext_resource type="PackedScene" uid="uid://daq05vc68eh1j" path="res://Prefabs/Interactables/Health.tscn" id="12_b3if7"]
+[ext_resource type="PackedScene" uid="uid://eqkvmg0h0dr5" path="res://Prefabs/HUD/HUD.tscn" id="13_4jkiy"]
+[ext_resource type="Script" path="res://Scripts/Door.gd" id="13_lxqbf"]
+[ext_resource type="PackedScene" uid="uid://t2mupu1pus6f" path="res://Prefabs/Interactables/BreakableBox.tscn" id="13_wxmj7"]
+[ext_resource type="PackedScene" uid="uid://gdcspeuxvibu" path="res://Prefabs/Characters/WalkerEnemy.tscn" id="14_1jhf1"]
+[ext_resource type="Texture2D" uid="uid://cuc6gsf55dm2t" path="res://Art/Demo/City/Gate.png" id="14_dqrwc"]
+[ext_resource type="PackedScene" uid="uid://h62fs37eb6ea" path="res://Prefabs/Interactables/Coins.tscn" id="14_wy3eg"]
+[ext_resource type="Texture2D" uid="uid://cu6y575pvs4v3" path="res://Art/Demo/City/Lock.png" id="15_0jplj"]
+[ext_resource type="Texture2D" uid="uid://dx2rl7dvluoju" path="res://Art/UI/IconE.png" id="16_ny8hr"]
+[ext_resource type="PackedScene" uid="uid://b20lfj3x6ikfa" path="res://Prefabs/Interactables/Actionable.tscn" id="17_6uilw"]
+[ext_resource type="AudioStream" uid="uid://daqqp44p7u8fc" path="res://Sounds/FX/doorOpen.wav" id="17_6xmux"]
+[ext_resource type="Resource" uid="uid://csi6crdaegt1s" path="res://Prefabs/Dialogue/Door.dialogue" id="18_g50kp"]
+[ext_resource type="PackedScene" uid="uid://bw4tldcd0348c" path="res://Prefabs/Characters/FlyerEnemy.tscn" id="19_a6pe8"]
+[ext_resource type="AudioStream" uid="uid://b2hg03jvma47q" path="res://Sounds/Ambience/ambience_city.wav" id="23_5c8gp"]
+[ext_resource type="Script" path="res://Scripts/Interactables/NPC.gd" id="29_tcpo7"]
+[ext_resource type="Texture2D" uid="uid://blwc0fo0tav5c" path="res://Art/Characters/Player/PlayerChest.png" id="30_lyv86"]
+[ext_resource type="Texture2D" uid="uid://c5jyqjdph1pjm" path="res://Art/Characters/Player/PlayerHead.png" id="31_n1foo"]
+[ext_resource type="Texture2D" uid="uid://cnh66x8ipild0" path="res://Art/Characters/Player/PlayerRightEye.png" id="32_i5txj"]
+[ext_resource type="Texture2D" uid="uid://bo6tolqcxvcmj" path="res://Art/Characters/Player/PlayerLeftEye.png" id="33_6kba3"]
+[ext_resource type="Texture2D" uid="uid://cj67vogjno7uf" path="res://Art/Characters/Player/PlayerRightBicep.png" id="34_5wjfj"]
+[ext_resource type="Texture2D" uid="uid://cc63f1rlyql22" path="res://Art/Characters/Player/PlayerRightArm.png" id="35_xhfjo"]
+[ext_resource type="Texture2D" uid="uid://b8kim1w2o3wwd" path="res://Art/Characters/Player/PlayerRightHand.png" id="36_l146t"]
+[ext_resource type="Texture2D" uid="uid://bjvfukliom8an" path="res://Art/Characters/Player/PlayerLeftBicep.png" id="37_p7k4m"]
+[ext_resource type="Texture2D" uid="uid://ffvo6342ejrh" path="res://Art/Characters/Player/PlayerLeftArm.png" id="38_k8syj"]
+[ext_resource type="Texture2D" uid="uid://bgv42nil3u14c" path="res://Art/Characters/Player/PlayerLeftHand.png" id="39_fr7xj"]
+[ext_resource type="Texture2D" uid="uid://bpuineh521xte" path="res://Art/Characters/Player/PlayerLeftThight.png" id="40_tniqf"]
+[ext_resource type="Texture2D" uid="uid://6tl3nq61fu4c" path="res://Art/Characters/Player/PlayerLeftCalf.png" id="41_c0wei"]
+[ext_resource type="Texture2D" uid="uid://cpuhjg6vd2qen" path="res://Art/Characters/Player/PlayerLeftFoot.png" id="42_i86oc"]
+[ext_resource type="Texture2D" uid="uid://dw14r5it4ydxp" path="res://Art/Characters/Player/PlayerRightThight.png" id="43_73yhf"]
+[ext_resource type="Texture2D" uid="uid://b238h00ichxhv" path="res://Art/Characters/Player/PlayerRightCalf.png" id="44_l7ty2"]
+[ext_resource type="Texture2D" uid="uid://0lqfac8o4umf" path="res://Art/Characters/Player/PlayerRightFoot.png" id="45_1x1t1"]
+[ext_resource type="Resource" uid="uid://b5084w8ypd0yv" path="res://Prefabs/Dialogue/NPC.dialogue" id="46_vqxns"]
+[ext_resource type="Script" path="res://Scripts/UI/LevelName.gd" id="48_ops7o"]
+
+[sub_resource type="Animation" id="Animation_rlhyh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i4icu"]
+resource_name = "main"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3, 4, 7, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tbcpo"]
+_data = {
+"RESET": SubResource("Animation_rlhyh"),
+"main": SubResource("Animation_i4icu")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbmb2"]
+size = Vector2(893, 970)
+
+[sub_resource type="Animation" id="Animation_ktlw6"]
+resource_name = "Open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5570, 770), Vector2(5570, 1770)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c2l61"]
+_data = {
+"Open": SubResource("Animation_ktlw6")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2kvr"]
+size = Vector2(901, 976)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6tyl"]
+size = Vector2(862, 836)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkpve"]
+size = Vector2(866, 869)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pewuf"]
+size = Vector2(864, 871)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxvke"]
+size = Vector2(853, 761)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0goo"]
+size = Vector2(868, 862)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qgac"]
+size = Vector2(872, 870)
+
+[sub_resource type="Animation" id="Animation_omf0g"]
+resource_name = "Stand"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Bone_Spine1/Bone_Spine2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.129868, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Bone_Spine1/Bone_Spine2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-1.27718, -1.18611, -1.24817, -1.30802, -1.27718]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL/Bone_ArmL:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.330976, -0.516628, -0.516628, -0.326649, -0.330976]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepR:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.43099, 1.34367, 1.43099]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepR/Bone_ArmR:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.0691011, -0.100813, -0.0691011]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.112476, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck/Bone_Head:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.168196, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck/Bone_Head/Bone_EyeR:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck/Bone_Head/Bone_EyeL:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Skeleton2D/Bone_Spine1/Bone_ThighL/Bone_CalfL:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.181588, 0.181588, 0.181588]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Skeleton2D/Bone_Spine1/Bone_ThighR/Bone_CalfR/Bone_FootR:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(45, 250), Vector2(45, 250), Vector2(45, 250)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Skeleton2D/Bone_Spine1/Bone_ThighR/Bone_CalfR/Bone_FootR:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3.09229, 3.09229, 3.09229]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7wdlp"]
+_data = {
+"Stand": SubResource("Animation_omf0g")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xe3en"]
+radius = 375.0
+height = 750.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fx3an"]
+radius = 740.068
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_7bisl")
+
+[node name="HUD" parent="." instance=ExtResource("13_4jkiy")]
+
+[node name="LevelName" type="Node" parent="HUD"]
+script = ExtResource("48_ops7o")
+
+[node name="Label" type="Label" parent="HUD/LevelName"]
+modulate = Color(1, 1, 1, 0)
+z_index = 100
+offset_left = 1608.0
+offset_top = 1138.0
+offset_right = 2214.0
+offset_bottom = 1278.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "Demo Level"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/LevelName"]
+libraries = {
+"": SubResource("AnimationLibrary_tbcpo")
+}
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("4_lg3nu")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+offset_right = 3840.0
+offset_bottom = 2708.0
+scale = Vector2(1, 0.24)
+color = Color(0, 0, 0, 0.411765)
+
+[node name="ColorRect2" type="ColorRect" parent="PauseMenu"]
+offset_top = 1600.0
+offset_right = 3840.0
+offset_bottom = 4308.0
+scale = Vector2(1, 0.24)
+color = Color(0, 0, 0, 0.411765)
+
+[node name="ColorRect3" type="ColorRect" parent="PauseMenu"]
+offset_top = 1050.0
+offset_right = 3840.0
+offset_bottom = 3967.0
+scale = Vector2(1, 0.12)
+color = Color(0, 0, 0, 0.411765)
+
+[node name="Resume" type="Button" parent="PauseMenu"]
+custom_minimum_size = Vector2(400, 200)
+offset_top = 650.0
+offset_right = 3840.0
+offset_bottom = 850.0
+theme_override_font_sizes/font_size = 80
+action_mode = 0
+text = "CONTINUE"
+
+[node name="Restart" type="Button" parent="PauseMenu"]
+custom_minimum_size = Vector2(400, 200)
+offset_top = 850.0
+offset_right = 3840.0
+offset_bottom = 1050.0
+theme_override_font_sizes/font_size = 80
+action_mode = 0
+text = "RESTART LEVEL"
+
+[node name="Quit" type="Button" parent="PauseMenu"]
+custom_minimum_size = Vector2(400, 200)
+offset_top = 1400.0
+offset_right = 3840.0
+offset_bottom = 1600.0
+theme_override_colors/font_color = Color(1, 0, 0.329412, 1)
+theme_override_font_sizes/font_size = 60
+action_mode = 0
+text = "QUIT & LOSE PROGRESS"
+
+[node name="Player" parent="." instance=ExtResource("1_dwvba")]
+position = Vector2(-2579, 975)
+scale = Vector2(0.2, 0.2)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-475, 34.5139)
+ignore_rotation = false
+process_callback = 0
+limit_left = -4200
+limit_top = 0
+limit_right = 16500
+limit_bottom = 2000
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_left_margin = 0.05
+drag_top_margin = 0.5
+drag_right_margin = 0.05
+drag_bottom_margin = 0.1
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("3_cnqjj")
+
+[node name="Timer" type="Timer" parent="Player/Camera2D"]
+one_shot = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Player/Camera2D"]
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Player/Camera2D/ParallaxBackground"]
+motion_mirroring = Vector2(7680, 0)
+
+[node name="Sky" type="Sprite2D" parent="Player/Camera2D/ParallaxBackground/ParallaxLayer6"]
+position = Vector2(0, 1075)
+texture = ExtResource("1_md51d")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Player/Camera2D/ParallaxBackground"]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(7680, 0)
+
+[node name="BuildingsBG" type="Sprite2D" parent="Player/Camera2D/ParallaxBackground/ParallaxLayer5"]
+position = Vector2(0.000244141, 1075)
+texture = ExtResource("2_u60nr")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Player/Camera2D/ParallaxBackground"]
+motion_scale = Vector2(0.65, 0)
+motion_mirroring = Vector2(7680, 0)
+
+[node name="BuildingsMid" type="Sprite2D" parent="Player/Camera2D/ParallaxBackground/ParallaxLayer4"]
+position = Vector2(0, 1075)
+texture = ExtResource("3_wuy86")
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="Player/Camera2D"]
+layer = 100
+offset = Vector2(-200, 0)
+transform = Transform2D(1, 0, 0, 1, -200, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Player/Camera2D/ParallaxForeground"]
+motion_scale = Vector2(1.23, 0)
+
+[node name="Foreground1" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(3293, 1839)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground26" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(-6467, 1423)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground27" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(-7299, 1439)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground16" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(1934, 1839)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground17" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(318, 1741)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground19" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(-626, 1817)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground20" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(-1351, 1967)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground21" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(-1573, 1859)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground22" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(-3239, 1653)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground23" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(-4054, 1738)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground24" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(-4851, 1671)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground25" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(-5659, 1440)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground18" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(1111, 1937)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground2" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(3890, 1779)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground3" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(4592, 1636)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground4" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(5430, 1425)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground5" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(6230, 1417)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground6" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(7144, 1296)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground7" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(8111, 1394)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground8" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(9221, 1507)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground9" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(10044, 1364)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground10" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(11448, 1228)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground11" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(12052, 1470)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground12" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(12649, 1402)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground13" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(13313, 1319)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground14" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(14121, 1168)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground15" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(14952, 994)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground28" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(15776, 1074)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground29" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(16448, 1106)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground30" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(17296, 1106)
+texture = ExtResource("7_veoyq")
+
+[node name="Foreground31" type="Sprite2D" parent="Player/Camera2D/ParallaxForeground/ParallaxLayer"]
+position = Vector2(18128, 1114)
+texture = ExtResource("7_veoyq")
+
+[node name="Walker Enemies" type="Node2D" parent="."]
+
+[node name="WalkerEnemy" parent="Walker Enemies" instance=ExtResource("14_1jhf1")]
+z_index = 50
+position = Vector2(-1361, 1503)
+
+[node name="WalkerEnemy2" parent="Walker Enemies" instance=ExtResource("14_1jhf1")]
+z_index = 50
+position = Vector2(3056, 1368)
+
+[node name="WalkerEnemy3" parent="Walker Enemies" instance=ExtResource("14_1jhf1")]
+z_index = 50
+position = Vector2(7187, 702)
+
+[node name="WalkerEnemy4" parent="Walker Enemies" instance=ExtResource("14_1jhf1")]
+z_index = 50
+position = Vector2(7511, 702)
+
+[node name="Collectables" type="Node2D" parent="."]
+
+[node name="Key" parent="Collectables" instance=ExtResource("10_nxmdr")]
+position = Vector2(2449, 297)
+rotation = 1.5708
+
+[node name="Coins" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(-170, 1054)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins2" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(-42, 1054)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins3" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(144, 1226)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins4" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(272, 1226)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins5" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(735, 1638)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins6" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(2071, 1071)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins7" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(2291, 1071)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins8" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(3344, 287)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins9" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(3564, 287)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins10" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(4241, 751)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins11" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(4461, 751)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins12" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(5952, 712)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins13" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(5952, 832)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins14" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(5952, 952)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins15" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(5952, 1104)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins17" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(5760, 832)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins18" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(5760, 952)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins19" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(5760, 1104)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins20" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(6128, 840)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins21" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(6128, 952)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins22" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(6128, 1104)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins23" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(9544, 864)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins24" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(9544, 968)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins25" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(9544, 1080)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins26" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(9368, 864)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins27" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(9368, 968)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins28" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(9368, 1080)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins29" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(9728, 864)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins30" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(9728, 968)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins31" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(9728, 1080)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins32" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(11208, 1048)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins33" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(11032, 1048)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins34" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(11376, 1048)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins35" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(12744, 640)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins36" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(12568, 640)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins37" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(12912, 640)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins38" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(13656, 1152)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins39" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(13480, 1152)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins40" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(13824, 1152)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins16" parent="Collectables" instance=ExtResource("14_wy3eg")]
+position = Vector2(5952, 1232)
+scale = Vector2(0.75, 0.75)
+
+[node name="Health" parent="Collectables" instance=ExtResource("12_b3if7")]
+position = Vector2(387, 1226)
+scale = Vector2(0.75, 0.75)
+
+[node name="Health2" parent="Collectables" instance=ExtResource("12_b3if7")]
+position = Vector2(10080, 1226)
+scale = Vector2(0.75, 0.75)
+
+[node name="Health3" parent="Collectables" instance=ExtResource("12_b3if7")]
+position = Vector2(11840, 1056)
+scale = Vector2(0.75, 0.75)
+
+[node name="Health4" parent="Collectables" instance=ExtResource("12_b3if7")]
+position = Vector2(11976, 1056)
+scale = Vector2(0.75, 0.75)
+
+[node name="Health5" parent="Collectables" instance=ExtResource("12_b3if7")]
+position = Vector2(14208, 984)
+scale = Vector2(0.75, 0.75)
+
+[node name="Health6" parent="Collectables" instance=ExtResource("12_b3if7")]
+position = Vector2(14336, 984)
+scale = Vector2(0.75, 0.75)
+
+[node name="Health7" parent="Collectables" instance=ExtResource("12_b3if7")]
+position = Vector2(14456, 984)
+scale = Vector2(0.75, 0.75)
+
+[node name="LevelElements" type="Node2D" parent="."]
+
+[node name="Door" type="StaticBody2D" parent="LevelElements"]
+position = Vector2(5570, 770)
+script = ExtResource("13_lxqbf")
+
+[node name="GateSprite" type="Sprite2D" parent="LevelElements/Door"]
+texture = ExtResource("14_dqrwc")
+
+[node name="LockSprite" type="Sprite2D" parent="LevelElements/Door"]
+texture = ExtResource("15_0jplj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelElements/Door"]
+visible = false
+polygon = PackedVector2Array(-496, 392, -496, 352, -424, 352, -424, 312, -360, 312, -360, 272, -328, 272, -328, -416, -72, -416, -72, 272, -40, 272, -40, 312, 24, 312, 24, 352, 96, 352, 96, 392)
+
+[node name="IconE" type="Sprite2D" parent="LevelElements/Door"]
+visible = false
+position = Vector2(-199, -20)
+texture = ExtResource("16_ny8hr")
+
+[node name="DoorArea" type="Area2D" parent="LevelElements/Door"]
+position = Vector2(-201, 155)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelElements/Door/DoorArea"]
+position = Vector2(1.5, -248)
+shape = SubResource("RectangleShape2D_pbmb2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelElements/Door"]
+libraries = {
+"": SubResource("AnimationLibrary_c2l61")
+}
+
+[node name="OpenSound" type="AudioStreamPlayer2D" parent="LevelElements/Door"]
+stream = ExtResource("17_6xmux")
+
+[node name="Actionable" parent="LevelElements/Door" instance=ExtResource("17_6uilw")]
+dialogue_resource = ExtResource("18_g50kp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelElements/Door/Actionable"]
+position = Vector2(-198.5, -90)
+shape = SubResource("RectangleShape2D_p2kvr")
+
+[node name="Platform" parent="LevelElements" instance=ExtResource("5_lm7hn")]
+position = Vector2(5520, 1626)
+
+[node name="Platform2" parent="LevelElements" instance=ExtResource("5_lm7hn")]
+position = Vector2(4628, 1177)
+
+[node name="Platform3" parent="LevelElements" instance=ExtResource("5_lm7hn")]
+position = Vector2(13913, 1508)
+
+[node name="Ground1" parent="LevelElements" instance=ExtResource("4_1u1w3")]
+position = Vector2(0, 1072)
+
+[node name="Ground1(2)" parent="LevelElements" instance=ExtResource("4_1u1w3")]
+position = Vector2(2072, 1072)
+
+[node name="Ground1(3)" parent="LevelElements" instance=ExtResource("4_1u1w3")]
+position = Vector2(7864, 1104)
+
+[node name="Ground1(4)" parent="LevelElements" instance=ExtResource("4_1u1w3")]
+position = Vector2(9944, 712)
+
+[node name="Ground1(5)" parent="LevelElements" instance=ExtResource("4_1u1w3")]
+position = Vector2(11992, 1088)
+
+[node name="Ground1(6)" parent="LevelElements" instance=ExtResource("4_1u1w3")]
+position = Vector2(16094, 1165)
+
+[node name="Ground1(7)" parent="LevelElements" instance=ExtResource("4_1u1w3")]
+position = Vector2(17622, 556)
+
+[node name="Ground2" parent="LevelElements" instance=ExtResource("5_77dku")]
+position = Vector2(1680, 1080)
+
+[node name="Ground4" parent="LevelElements" instance=ExtResource("5_77dku")]
+position = Vector2(1438, 1685)
+
+[node name="Ground2(2)" parent="LevelElements" instance=ExtResource("5_77dku")]
+position = Vector2(3768, 1384)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="Bridge" parent="LevelElements" instance=ExtResource("8_8b26j")]
+position = Vector2(13888, 1272)
+
+[node name="Ground3" parent="LevelElements" instance=ExtResource("6_kwbpb")]
+position = Vector2(9520, 1084)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LevelElements"]
+
+[node name="Foreground26" type="Sprite2D" parent="LevelElements/StaticBody2D"]
+position = Vector2(-5931, 602)
+texture = ExtResource("7_veoyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelElements/StaticBody2D"]
+position = Vector2(-3925, 1209)
+shape = SubResource("RectangleShape2D_s6tyl")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="LevelElements"]
+
+[node name="Foreground27" type="Sprite2D" parent="LevelElements/StaticBody2D2"]
+position = Vector2(-5931, -235)
+texture = ExtResource("7_veoyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelElements/StaticBody2D2"]
+position = Vector2(-3930, 373.5)
+shape = SubResource("RectangleShape2D_tkpve")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="LevelElements"]
+
+[node name="Foreground28" type="Sprite2D" parent="LevelElements/StaticBody2D3"]
+position = Vector2(-6007, -987)
+texture = ExtResource("7_veoyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelElements/StaticBody2D3"]
+position = Vector2(-4003, -383.5)
+shape = SubResource("RectangleShape2D_pewuf")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="LevelElements"]
+
+[node name="Foreground29" type="Sprite2D" parent="LevelElements/StaticBody2D4"]
+position = Vector2(14438, 564)
+texture = ExtResource("7_veoyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelElements/StaticBody2D4"]
+position = Vector2(16443, 1133)
+shape = SubResource("RectangleShape2D_bxvke")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="LevelElements"]
+
+[node name="Foreground31" type="Sprite2D" parent="LevelElements/StaticBody2D5"]
+position = Vector2(14546, -1049)
+texture = ExtResource("7_veoyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelElements/StaticBody2D5"]
+position = Vector2(16550, -445)
+shape = SubResource("RectangleShape2D_h0goo")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="LevelElements"]
+
+[node name="Foreground30" type="Sprite2D" parent="LevelElements/StaticBody2D6"]
+position = Vector2(14438, -273)
+texture = ExtResource("7_veoyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelElements/StaticBody2D6"]
+position = Vector2(16443, 333)
+shape = SubResource("RectangleShape2D_7qgac")
+
+[node name="Boxes" type="Node2D" parent="."]
+
+[node name="BreakableBox" parent="Boxes" instance=ExtResource("13_wxmj7")]
+position = Vector2(-948, 1489)
+
+[node name="BreakableBox3" parent="Boxes" instance=ExtResource("13_wxmj7")]
+position = Vector2(-3418, 1488)
+
+[node name="BreakableBox2" parent="Boxes" instance=ExtResource("13_wxmj7")]
+position = Vector2(998, 1648)
+
+[node name="BreakableBox4" parent="Boxes" instance=ExtResource("13_wxmj7")]
+position = Vector2(1747, 1389)
+
+[node name="BreakableBox5" parent="Boxes" instance=ExtResource("13_wxmj7")]
+position = Vector2(2664, 1752)
+
+[node name="BreakableBox6" parent="Boxes" instance=ExtResource("13_wxmj7")]
+position = Vector2(6289, 1262)
+
+[node name="BreakableBox7" parent="Boxes" instance=ExtResource("13_wxmj7")]
+position = Vector2(6923, 1129)
+
+[node name="BreakableBox8" parent="Boxes" instance=ExtResource("13_wxmj7")]
+position = Vector2(8370, 870)
+
+[node name="FlyerEnemies" type="Node2D" parent="."]
+
+[node name="FlyerEnemy" parent="FlyerEnemies" instance=ExtResource("19_a6pe8")]
+position = Vector2(4372, 521)
+
+[node name="FlyerEnemy2" parent="FlyerEnemies" instance=ExtResource("19_a6pe8")]
+position = Vector2(12755, 382)
+
+[node name="FlyerEnemy3" parent="FlyerEnemies" instance=ExtResource("19_a6pe8")]
+position = Vector2(14325, 788)
+
+[node name="NPC" type="Node2D" parent="."]
+position = Vector2(-3019, 1451)
+scale = Vector2(0.2, 0.2)
+script = ExtResource("29_tcpo7")
+
+[node name="Skeleton2D" type="Skeleton2D" parent="NPC"]
+scale = Vector2(-1, 1)
+
+[node name="Bone_Spine1" type="Bone2D" parent="NPC/Skeleton2D"]
+position = Vector2(0, 55)
+rest = Transform2D(1, 0, 0, 1, 0, 55)
+auto_calculate_length_and_angle = false
+length = 200.0
+bone_angle = -90.0
+
+[node name="Bone_Spine2" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1"]
+position = Vector2(0, -184)
+rest = Transform2D(1, 0, 0, 1, 0, -184)
+auto_calculate_length_and_angle = false
+length = 200.0
+bone_angle = -90.0
+
+[node name="ChestSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2"]
+z_index = 50
+position = Vector2(0, 128)
+texture = ExtResource("30_lyv86")
+
+[node name="Bone_Neck" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2"]
+position = Vector2(0, -190)
+rest = Transform2D(1, 0, 0, 1, 0, -190)
+auto_calculate_length_and_angle = false
+length = 25.0
+bone_angle = -90.0
+
+[node name="Bone_Head" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck"]
+position = Vector2(0, -38)
+rest = Transform2D(1, 0, 0, 1, 0, -38)
+auto_calculate_length_and_angle = false
+length = 100.0
+bone_angle = -90.0
+
+[node name="HeadSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck/Bone_Head"]
+z_index = 50
+position = Vector2(0, 360)
+texture = ExtResource("31_n1foo")
+
+[node name="Bone_EyeR" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck/Bone_Head"]
+position = Vector2(61.9425, -39.3616)
+rotation = -0.00752335
+rest = Transform2D(1, 0, 0, 1, 86, -43)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 180.0
+
+[node name="EyeRSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck/Bone_Head/Bone_EyeR"]
+z_index = 50
+position = Vector2(-70, 414)
+texture = ExtResource("32_i5txj")
+
+[node name="Bone_EyeL" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck/Bone_Head"]
+position = Vector2(-61.0575, -43.3616)
+rotation = -0.00752335
+rest = Transform2D(1, 0, 0, 1, -37, -47)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="EyeLSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck/Bone_Head/Bone_EyeL"]
+z_index = 50
+position = Vector2(73.3541, 415.721)
+texture = ExtResource("33_6kba3")
+
+[node name="Bone_BicepR" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2"]
+position = Vector2(90, -170)
+rotation = 1.43099
+rest = Transform2D(1, 0, 0, 1, 90, -170)
+
+[node name="BicepRSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepR"]
+z_index = 50
+position = Vector2(-90, 300)
+texture = ExtResource("34_5wjfj")
+
+[node name="Bone_ArmR" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepR"]
+position = Vector2(215, 0)
+rotation = -0.0691011
+rest = Transform2D(1, 0, 0, 1, 215, 0)
+
+[node name="ArmRSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepR/Bone_ArmR"]
+z_index = 50
+position = Vector2(-300, 300)
+texture = ExtResource("35_xhfjo")
+
+[node name="Bone_HandR" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepR/Bone_ArmR"]
+position = Vector2(215, 1)
+rest = Transform2D(1, 0, 0, 1, 215, 1)
+auto_calculate_length_and_angle = false
+length = 50.0
+bone_angle = 0.0
+
+[node name="HandRSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepR/Bone_ArmR/Bone_HandR"]
+z_index = 50
+position = Vector2(-520, 300)
+texture = ExtResource("36_l146t")
+
+[node name="Bone_BicepL" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2"]
+position = Vector2(-90, -170)
+rotation = -1.27718
+rest = Transform2D(1, 0, 0, 1, -90, -170)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 180.0
+
+[node name="BicepLSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL"]
+z_index = 50
+position = Vector2(90, 300)
+texture = ExtResource("37_p7k4m")
+
+[node name="Bone_ArmL" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL"]
+position = Vector2(-215, 0)
+rotation = -0.330976
+rest = Transform2D(1, 0, 0, 1, -215, 0)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 180.0
+
+[node name="ArmLSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL/Bone_ArmL"]
+z_index = 50
+position = Vector2(300, 300)
+texture = ExtResource("38_k8syj")
+
+[node name="Bone_HandL" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL/Bone_ArmL"]
+position = Vector2(-215, 0)
+rest = Transform2D(1, 0, 0, 1, -215, 0)
+auto_calculate_length_and_angle = false
+length = 50.0
+bone_angle = 180.0
+
+[node name="HandLSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL/Bone_ArmL/Bone_HandL"]
+z_index = 50
+position = Vector2(520, 300)
+texture = ExtResource("39_fr7xj")
+
+[node name="Bone_BicepL" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL"]
+visible = false
+position = Vector2(-90, -170)
+rotation = 0.2861
+rest = Transform2D(1, 0, 0, 1, -90, -170)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 180.0
+
+[node name="BicepLSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL/Bone_BicepL"]
+z_index = 50
+position = Vector2(90, 300)
+texture = ExtResource("37_p7k4m")
+
+[node name="Bone_ArmL" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL/Bone_BicepL"]
+position = Vector2(-215, 0)
+rotation = -0.326649
+scale = Vector2(0.999999, 0.999999)
+rest = Transform2D(1, 0, 0, 1, -215, 0)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 180.0
+
+[node name="ArmLSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL/Bone_BicepL/Bone_ArmL"]
+z_index = 50
+position = Vector2(300, 300)
+texture = ExtResource("38_k8syj")
+
+[node name="Bone_HandL" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL/Bone_BicepL/Bone_ArmL"]
+position = Vector2(-215, 0)
+rest = Transform2D(1, 0, 0, 1, -215, 0)
+auto_calculate_length_and_angle = false
+length = 50.0
+bone_angle = 180.0
+
+[node name="HandLSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL/Bone_BicepL/Bone_ArmL/Bone_HandL"]
+z_index = 50
+position = Vector2(520, 300)
+texture = ExtResource("39_fr7xj")
+
+[node name="Bone_ThighL" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1"]
+position = Vector2(-70, 1)
+rotation = -0.212137
+rest = Transform2D(1, 0, 0, 1, -70, 1)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 110.0
+
+[node name="ThighLSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_ThighL"]
+z_index = 50
+position = Vector2(67, -40)
+texture = ExtResource("40_tniqf")
+
+[node name="Bone_CalfL" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_ThighL"]
+position = Vector2(-65, 250)
+rotation = 0.181588
+rest = Transform2D(1, 0, 0, 1, -65, 250)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 110.0
+
+[node name="CalfLSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_ThighL/Bone_CalfL"]
+z_index = 50
+position = Vector2(135, -300)
+texture = ExtResource("41_c0wei")
+
+[node name="Bone_FootL" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_ThighL/Bone_CalfL"]
+position = Vector2(-45, 250)
+rotation = -3.10297
+scale = Vector2(0.999997, 0.999997)
+rest = Transform2D(1, 0, 0, 1, -45, 250)
+auto_calculate_length_and_angle = false
+length = 75.0
+bone_angle = 0.0
+
+[node name="FootLSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_ThighL/Bone_CalfL/Bone_FootL"]
+z_index = 50
+position = Vector2(180, -555)
+texture = ExtResource("42_i86oc")
+
+[node name="Bone_ThighR" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1"]
+position = Vector2(70, 0)
+rotation = -0.0407203
+rest = Transform2D(1, 0, 0, 1, 70, 0)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 70.0
+
+[node name="ThighR_sprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_ThighR"]
+z_index = 50
+position = Vector2(-67, -40)
+texture = ExtResource("43_73yhf")
+
+[node name="Bone_CalfR" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_ThighR"]
+position = Vector2(55, 250)
+rotation = 0.183213
+rest = Transform2D(1, 0, 0, 1, 55, 250)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 70.0
+
+[node name="CalfRSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_ThighR/Bone_CalfR"]
+z_index = 50
+position = Vector2(-125, -300)
+texture = ExtResource("44_l7ty2")
+
+[node name="Bone_FootR" type="Bone2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_ThighR/Bone_CalfR"]
+position = Vector2(45, 250)
+rotation = 3.09229
+scale = Vector2(0.999997, 0.999997)
+rest = Transform2D(1, 0, 0, 1, 45, 250)
+auto_calculate_length_and_angle = false
+length = 75.0
+bone_angle = 0.0
+
+[node name="FootRSprite" type="Sprite2D" parent="NPC/Skeleton2D/Bone_Spine1/Bone_ThighR/Bone_CalfR/Bone_FootR"]
+z_index = 50
+position = Vector2(-170, -555)
+texture = ExtResource("45_1x1t1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NPC"]
+libraries = {
+"": SubResource("AnimationLibrary_7wdlp")
+}
+
+[node name="Area2D" type="Area2D" parent="NPC"]
+position = Vector2(0, -866)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Area2D"]
+position = Vector2(0, 370.5)
+shape = SubResource("CapsuleShape2D_xe3en")
+
+[node name="IconE" type="Sprite2D" parent="NPC"]
+visible = false
+position = Vector2(0, -866)
+scale = Vector2(2, 2)
+texture = ExtResource("16_ny8hr")
+
+[node name="Actionable" parent="NPC" instance=ExtResource("17_6uilw")]
+dialogue_resource = ExtResource("46_vqxns")
+dialogue_start = "npcA"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/Actionable"]
+position = Vector2(0, -120)
+shape = SubResource("CircleShape2D_fx3an")
+
+[node name="Ambient" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_5c8gp")
+autoplay = true
+
+[connection signal="pressed" from="PauseMenu/Resume" to="PauseMenu" method="_on_resume_pressed" flags=18]
+[connection signal="pressed" from="PauseMenu/Restart" to="PauseMenu" method="_on_restart_pressed" flags=18]
+[connection signal="pressed" from="PauseMenu/Quit" to="PauseMenu" method="_on_quit_pressed" flags=18]
+[connection signal="knockback" from="Player" to="Walker Enemies/WalkerEnemy" method="_on_player_knockback"]
+[connection signal="knockback" from="Player" to="Walker Enemies/WalkerEnemy2" method="_on_player_knockback"]
+[connection signal="knockback" from="Player" to="Walker Enemies/WalkerEnemy3" method="_on_player_knockback"]
+[connection signal="knockback" from="Player" to="Walker Enemies/WalkerEnemy4" method="_on_player_knockback"]
+[connection signal="timeout" from="Player/Camera2D/Timer" to="Player/Camera2D" method="_on_timer_timeout"]
+[connection signal="door_opened" from="Collectables/Key" to="LevelElements/Door" method="_on_key_door_opened"]
+[connection signal="body_entered" from="LevelElements/Door/DoorArea" to="Collectables/Key" method="_on_door_area_body_entered"]
+[connection signal="body_entered" from="LevelElements/Door/DoorArea" to="LevelElements/Door" method="_on_area_2d_body_entered" flags=18]
+[connection signal="body_exited" from="LevelElements/Door/DoorArea" to="Collectables/Key" method="_on_door_area_body_exited"]
+[connection signal="body_exited" from="LevelElements/Door/DoorArea" to="LevelElements/Door" method="_on_area_2d_body_exited" flags=18]
+[connection signal="body_entered" from="NPC/Area2D" to="NPC" method="_on_area_2d_body_entered" flags=18]
+[connection signal="body_exited" from="NPC/Area2D" to="NPC" method="_on_area_2d_body_exited" flags=18]
