@@ -48,7 +48,7 @@ func take_damage():
 		var instanced_particles = instantiate_particles()
 		instanced_particles.emitting = true
 
-func _on_timer_timeout():
+#func _on_timer_timeout():
 #	if is_alive:
 #		var instance = bomb.instantiate()
 #		add_child(instance)
