@@ -1253,9 +1253,9 @@ shape = SubResource("CircleShape2D_fx3an")
 stream = ExtResource("23_5c8gp")
 autoplay = true
 
-[connection signal="pressed" from="PauseMenu/Resume" to="PauseMenu" method="_on_resume_pressed" flags=18]
-[connection signal="pressed" from="PauseMenu/Restart" to="PauseMenu" method="_on_restart_pressed" flags=18]
-[connection signal="pressed" from="PauseMenu/Quit" to="PauseMenu" method="_on_quit_pressed" flags=18]
+[connection signal="pressed" from="PauseMenu/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Restart" to="PauseMenu" method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/Quit" to="PauseMenu" method="_on_quit_pressed"]
 [connection signal="knockback" from="Player" to="Walker Enemies/WalkerEnemy" method="_on_player_knockback"]
 [connection signal="knockback" from="Player" to="Walker Enemies/WalkerEnemy2" method="_on_player_knockback"]
 [connection signal="knockback" from="Player" to="Walker Enemies/WalkerEnemy3" method="_on_player_knockback"]
@@ -1263,8 +1263,8 @@ autoplay = true
 [connection signal="timeout" from="Player/Camera2D/Timer" to="Player/Camera2D" method="_on_timer_timeout"]
 [connection signal="door_opened" from="Collectables/Key" to="LevelElements/Door" method="_on_key_door_opened"]
 [connection signal="body_entered" from="LevelElements/Door/DoorArea" to="Collectables/Key" method="_on_door_area_body_entered"]
-[connection signal="body_entered" from="LevelElements/Door/DoorArea" to="LevelElements/Door" method="_on_area_2d_body_entered" flags=18]
+[connection signal="body_entered" from="LevelElements/Door/DoorArea" to="LevelElements/Door" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="LevelElements/Door/DoorArea" to="Collectables/Key" method="_on_door_area_body_exited"]
-[connection signal="body_exited" from="LevelElements/Door/DoorArea" to="LevelElements/Door" method="_on_area_2d_body_exited" flags=18]
-[connection signal="body_entered" from="NPC/Area2D" to="NPC" method="_on_area_2d_body_entered" flags=18]
-[connection signal="body_exited" from="NPC/Area2D" to="NPC" method="_on_area_2d_body_exited" flags=18]
+[connection signal="body_exited" from="LevelElements/Door/DoorArea" to="LevelElements/Door" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="NPC/Area2D" to="NPC" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="NPC/Area2D" to="NPC" method="_on_area_2d_body_exited"]
