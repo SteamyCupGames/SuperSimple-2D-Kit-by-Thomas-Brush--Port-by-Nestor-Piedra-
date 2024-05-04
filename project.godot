@@ -14,6 +14,7 @@ config/name="SuperSimple2DKit by Thomas Brush (Port by Néstor Piedra)"
 config/tags=PackedStringArray("2d", "demo", "ported_from_unity", "tutorial")
 run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://Art/Menu/Logo.png"
 config/icon="res://Art/UI/AppIcon.png"

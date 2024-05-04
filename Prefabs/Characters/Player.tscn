@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cvbhfay5idocw"]
+[gd_scene load_steps=42 format=3 uid="uid://cvbhfay5idocw"]
 
 [ext_resource type="Script" path="res://Scripts/Core/NewPlayer.gd" id="1_ni5i6"]
 [ext_resource type="Texture2D" uid="uid://blwc0fo0tav5c" path="res://Art/Characters/Player/PlayerChest.png" id="2_ivotv"]
@@ -775,6 +775,18 @@ tracks/17/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Skeleton2D:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-23, -69)]
+}
 
 [sub_resource type="Animation" id="Animation_7neg4"]
 resource_name = "AttackUp"
@@ -1171,7 +1183,7 @@ tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.17041]
+"values": [2.18166]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
@@ -1200,58 +1212,46 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Skeleton2D/Bone_Spine1/Bone_ThighL/Bone_CalfL:rotation")
+tracks/15/path = NodePath("Skeleton2D/Bone_Spine1/Bone_ThighL/Bone_CalfL/Bone_FootL:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.17041]
+"values": [0.736019]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Skeleton2D/Bone_Spine1/Bone_ThighL/Bone_CalfL/Bone_FootL:rotation")
+tracks/16/path = NodePath("Skeleton2D/Bone_Spine1:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.736019]
+"values": [Vector2(6, 134)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Skeleton2D/Bone_Spine1:position")
+tracks/17/path = NodePath("Skeleton2D/Bone_Spine1/Bone_ThighR/Bone_CalfR:rotation")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(6, 134)]
+"values": [0.0225773]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("Skeleton2D/Bone_Spine1/Bone_ThighR/Bone_CalfR:rotation")
+tracks/18/path = NodePath("Skeleton2D/Bone_Spine1/Bone_ThighR/Bone_CalfR/Bone_FootR:rotation")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0225773]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("Skeleton2D/Bone_Spine1/Bone_ThighR/Bone_CalfR/Bone_FootR:rotation")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -2140,6 +2140,33 @@ tracks/17/keys = {
 "values": [Vector2(0, 133)]
 }
 
+[sub_resource type="Animation" id="Animation_feash"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Bone_Spine1/Bone_ThighL/Bone_CalfL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.18166]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-23, -69)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lg652"]
 _data = {
 "AttackDown": SubResource("Animation_ir2fl"),
@@ -2151,6 +2178,7 @@ _data = {
 "Fall": SubResource("Animation_c3lox"),
 "Health_Hurt": SubResource("Animation_ogt77"),
 "Jump": SubResource("Animation_pjtpc"),
+"RESET": SubResource("Animation_feash"),
 "Run": SubResource("Animation_hiyu6"),
 "Stand": SubResource("Animation_jo7p5")
 }
@@ -2161,21 +2189,23 @@ speed = 700.0
 jumpHeight = -1700.0
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
-position = Vector2(-23, -190)
+position = Vector2(-23, -69)
 
 [node name="Hitbox" type="Area2D" parent="Skeleton2D"]
-position = Vector2(-76, 693)
-rotation = 1.5708
+position = Vector2(734, 58)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Hitbox"]
 position = Vector2(2, 4)
 shape = SubResource("RectangleShape2D_ftogf")
 
 [node name="Bone_Spine1" type="Bone2D" parent="Skeleton2D"]
-position = Vector2(0, 133)
+position = Vector2(6, 235)
+rotation = 0.500428
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Bone_Spine2" type="Bone2D" parent="Skeleton2D/Bone_Spine1"]
+rotation = 0.177665
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="ChestSprite" type="Sprite2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2"]
@@ -2183,12 +2213,11 @@ texture = ExtResource("2_ivotv")
 
 [node name="Bone_Neck" type="Bone2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2"]
 position = Vector2(0, -322)
-rotation = -0.265973
+rotation = 0.134844
 rest = Transform2D(1, 0, 0, 1, 0, -322)
 
 [node name="Bone_Head" type="Bone2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck"]
 position = Vector2(0, -39)
-rotation = 0.198819
 rest = Transform2D(1, 0, 0, 1, 0, -39)
 
 [node name="HeadSprite" type="Sprite2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck/Bone_Head"]
@@ -2196,7 +2225,7 @@ position = Vector2(2, 360)
 texture = ExtResource("3_jr3l5")
 
 [node name="Bone_EyeL" type="Bone2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck/Bone_Head"]
-position = Vector2(-28.8927, -40.8377)
+position = Vector2(-23.0463, -46.3581)
 rest = Transform2D(1, 0, 0, 1, -66, -57)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -2207,7 +2236,7 @@ position = Vector2(68, 417)
 texture = ExtResource("4_lv7us")
 
 [node name="Bone_EyeR" type="Bone2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_Neck/Bone_Head"]
-position = Vector2(61.5915, -33.247)
+position = Vector2(69.4215, -51.5253)
 rest = Transform2D(1, 0, 0, 1, 52, -57)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -2219,7 +2248,7 @@ texture = ExtResource("5_wk75j")
 
 [node name="Bone_BicepR" type="Bone2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2"]
 position = Vector2(86, -297)
-rotation = 1.26549
+rotation = -0.664771
 rest = Transform2D(1, 0, 0, 1, 86, -297)
 
 [node name="BicepRSprite" type="Sprite2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepR"]
@@ -2228,7 +2257,7 @@ texture = ExtResource("6_g4lln")
 
 [node name="Bone_ArmR" type="Bone2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepR"]
 position = Vector2(217, 0)
-rotation = 0.293688
+rotation = -0.00618929
 rest = Transform2D(1, 0, 0, 1, 217, 0)
 
 [node name="ArmRSprite" type="Sprite2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepR/Bone_ArmR"]
@@ -2237,8 +2266,8 @@ texture = ExtResource("7_qf423")
 
 [node name="Bone_HandR" type="Bone2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepR/Bone_ArmR"]
 position = Vector2(245, -1)
-rotation = 0.177432
-scale = Vector2(0.577622, 1)
+rotation = -0.0296091
+scale = Vector2(0.577622, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 245, -1)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -2250,7 +2279,7 @@ texture = ExtResource("8_hfb8v")
 
 [node name="Bone_BicepL" type="Bone2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2"]
 position = Vector2(-101, -297)
-rotation = -1.22276
+rotation = -0.773086
 rest = Transform2D(1, 0, 0, 1, -101, -297)
 
 [node name="BicepLSprite" type="Sprite2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL"]
@@ -2259,7 +2288,7 @@ texture = ExtResource("11_0bejo")
 
 [node name="Bone_ArmL" type="Bone2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL"]
 position = Vector2(-215, 0)
-rotation = -0.467353
+rotation = -1.24324
 rest = Transform2D(1, 0, 0, 1, -215, 0)
 
 [node name="ArmLSprite" type="Sprite2D" parent="Skeleton2D/Bone_Spine1/Bone_Spine2/Bone_BicepL/Bone_ArmL"]
@@ -2280,7 +2309,7 @@ texture = ExtResource("10_6jkbo")
 
 [node name="Bone_ThighL" type="Bone2D" parent="Skeleton2D/Bone_Spine1"]
 position = Vector2(-77, 61)
-rotation = -0.257996
+rotation = -0.277474
 rest = Transform2D(1, 0, 0, 1, -77, 61)
 
 [node name="ThighLSprite" type="Sprite2D" parent="Skeleton2D/Bone_Spine1/Bone_ThighL"]
@@ -2289,7 +2318,8 @@ texture = ExtResource("14_05j7v")
 
 [node name="Bone_CalfL" type="Bone2D" parent="Skeleton2D/Bone_Spine1/Bone_ThighL"]
 position = Vector2(-58, 236)
-rotation = 0.208752
+rotation = 2.18166
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, -58, 236)
 
 [node name="CalfLSprite" type="Sprite2D" parent="Skeleton2D/Bone_Spine1/Bone_ThighL/Bone_CalfL"]
@@ -2309,7 +2339,8 @@ texture = ExtResource("13_4yk1l")
 
 [node name="Bone_ThighR" type="Bone2D" parent="Skeleton2D/Bone_Spine1"]
 position = Vector2(58, 61)
-rotation = 0.0515237
+rotation = -1.3577
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 58, 61)
 
 [node name="ThighR_sprite" type="Sprite2D" parent="Skeleton2D/Bone_Spine1/Bone_ThighR"]
@@ -2318,7 +2349,8 @@ texture = ExtResource("15_cw2bn")
 
 [node name="Bone_CalfR" type="Bone2D" parent="Skeleton2D/Bone_Spine1/Bone_ThighR"]
 position = Vector2(67, 239)
-rotation = 0.184356
+rotation = 1.09892
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 67, 239)
 
 [node name="CalfRSprite" type="Sprite2D" parent="Skeleton2D/Bone_Spine1/Bone_ThighR/Bone_CalfR"]
@@ -2337,8 +2369,8 @@ position = Vector2(-175, -557)
 texture = ExtResource("17_mhhvr")
 
 [node name="PlayerBlast" type="Sprite2D" parent="Skeleton2D"]
-position = Vector2(-371, 51)
-rotation = 1.5708
+visible = false
+position = Vector2(211, 350)
 texture = ExtResource("18_wxcrh")
 
 [node name="JumpEffect" type="Sprite2D" parent="Skeleton2D"]

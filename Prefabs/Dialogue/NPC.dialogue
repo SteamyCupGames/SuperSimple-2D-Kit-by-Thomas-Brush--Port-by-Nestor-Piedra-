@@ -1,7 +1,7 @@
 ~ npcA
 set GameManager.is_hud_available = false
 
-if GameManager.coins < 1:
+if GameManager.coins < 80:
 	NPC: Hi there!
 	NPC: I'm an NPC! This conversation is called 'npcA'
 	NPC: If you go and find me 80 coins, my dialogue will move on to 'npcB'

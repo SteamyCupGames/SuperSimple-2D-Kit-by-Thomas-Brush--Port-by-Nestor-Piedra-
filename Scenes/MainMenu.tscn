@@ -40,6 +40,6 @@ theme_override_font_sizes/font_size = 80
 action_mode = 0
 text = "QUIT "
 
-[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="StartGame" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

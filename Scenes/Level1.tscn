@@ -306,6 +306,7 @@ radius = 740.068
 script = ExtResource("1_7bisl")
 
 [node name="HUD" parent="." instance=ExtResource("13_4jkiy")]
+layer = 0
 
 [node name="LevelName" type="Node" parent="HUD"]
 script = ExtResource("48_ops7o")
