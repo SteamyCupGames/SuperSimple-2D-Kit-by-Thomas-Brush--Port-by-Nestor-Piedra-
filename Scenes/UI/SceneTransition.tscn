@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-14000, -20000), Vector2(-6851, -20000)]
+"values": [Vector2(-15724, -20302), Vector2(-9757, -20383)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3b2uu"]
@@ -35,10 +35,10 @@ script = ExtResource("1_cm2i0")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -6851.0
-offset_top = -18000.0
-offset_right = 39476.0
-offset_bottom = 9109.0
+offset_left = -9757.0
+offset_top = -20383.0
+offset_right = 40410.0
+offset_bottom = 8886.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_hp52c")
